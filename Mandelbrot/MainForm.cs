@@ -58,7 +58,10 @@ public partial class MainForm : Form, IMainForm
 				_scale = 500.0D;
 				Draw();
 			}
+			else
+				Terminal.Warning($"Положение уже сброшено или кадр не сгенерирован");
 		};
+		SaveImage_BT.Click += (sender, e) => OnImageSave?.Invoke(Viewport_PictureBox.Image);
 		Generate_BT.Click += (sender, e) => Draw();
 		MinimiseForm_BT.Click += (sender, e) => { WindowState = FormWindowState.Minimized; };
 		CloseForm_BT.Click += (sender, e) => Close();
@@ -73,4 +76,5 @@ public partial class MainForm : Form, IMainForm
 	}
 
 	public event EventHandler<MainFormEventArgs>? OnGenerate;
+	public event Action<Image>? OnImageSave;
 }

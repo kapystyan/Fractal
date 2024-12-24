@@ -45,6 +45,7 @@
 			FractalZoneColor = new ColorDialog();
 			CloseForm_BT = new Button();
 			MinimiseForm_BT = new Button();
+			SaveImage_BT = new Button();
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).BeginInit();
 			Settings_Panel.SuspendLayout();
 			Control_Panel.SuspendLayout();
@@ -107,6 +108,7 @@
 			// 
 			Control_Panel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			Control_Panel.BackColor = Color.FromArgb(20, 20, 20);
+			Control_Panel.Controls.Add(SaveImage_BT);
 			Control_Panel.Controls.Add(ResetZoom_BT);
 			Control_Panel.Controls.Add(ChooseColor_BT);
 			Control_Panel.Controls.Add(Generate_BT);
@@ -252,6 +254,20 @@
 			MinimiseForm_BT.Text = "__";
 			MinimiseForm_BT.UseVisualStyleBackColor = false;
 			// 
+			// SaveImage_BT
+			// 
+			SaveImage_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			SaveImage_BT.BackColor = Color.FromArgb(20, 20, 20);
+			SaveImage_BT.FlatAppearance.BorderColor = Color.Gray;
+			SaveImage_BT.FlatStyle = FlatStyle.Flat;
+			SaveImage_BT.ForeColor = SystemColors.ButtonFace;
+			SaveImage_BT.Location = new Point(3, 32);
+			SaveImage_BT.Name = "SaveImage_BT";
+			SaveImage_BT.Size = new Size(337, 23);
+			SaveImage_BT.TabIndex = 2;
+			SaveImage_BT.Text = "Сохранить кадр";
+			SaveImage_BT.UseVisualStyleBackColor = false;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -300,5 +316,6 @@
 		private Button MinimiseForm_BT;
 		private Button ResetZoom_BT;
 		private TextBox Info_TextBox;
+		private Button SaveImage_BT;
 	}
 }
