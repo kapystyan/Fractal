@@ -34,6 +34,7 @@
 			Settings_Panel = new Panel();
 			Info_TextBox = new TextBox();
 			Control_Panel = new Panel();
+			SaveImage_BT = new Button();
 			ResetZoom_BT = new Button();
 			ChooseColor_BT = new Button();
 			Generate_BT = new Button();
@@ -45,7 +46,6 @@
 			FractalZoneColor = new ColorDialog();
 			CloseForm_BT = new Button();
 			MinimiseForm_BT = new Button();
-			SaveImage_BT = new Button();
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).BeginInit();
 			Settings_Panel.SuspendLayout();
 			Control_Panel.SuspendLayout();
@@ -117,6 +117,20 @@
 			Control_Panel.Size = new Size(343, 127);
 			Control_Panel.TabIndex = 1;
 			// 
+			// SaveImage_BT
+			// 
+			SaveImage_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			SaveImage_BT.BackColor = Color.FromArgb(20, 20, 20);
+			SaveImage_BT.FlatAppearance.BorderColor = Color.Gray;
+			SaveImage_BT.FlatStyle = FlatStyle.Flat;
+			SaveImage_BT.ForeColor = SystemColors.ButtonFace;
+			SaveImage_BT.Location = new Point(3, 32);
+			SaveImage_BT.Name = "SaveImage_BT";
+			SaveImage_BT.Size = new Size(337, 23);
+			SaveImage_BT.TabIndex = 2;
+			SaveImage_BT.Text = "Сохранить кадр";
+			SaveImage_BT.UseVisualStyleBackColor = false;
+			// 
 			// ResetZoom_BT
 			// 
 			ResetZoom_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -178,9 +192,9 @@
 			QualityValue_Label.ForeColor = SystemColors.Control;
 			QualityValue_Label.Location = new Point(63, 3);
 			QualityValue_Label.Name = "QualityValue_Label";
-			QualityValue_Label.Size = new Size(19, 15);
+			QualityValue_Label.Size = new Size(25, 15);
 			QualityValue_Label.TabIndex = 3;
-			QualityValue_Label.Text = "10";
+			QualityValue_Label.Text = "100";
 			QualityValue_Label.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// Quality_TrackBar
@@ -195,7 +209,7 @@
 			Quality_TrackBar.Size = new Size(337, 45);
 			Quality_TrackBar.TabIndex = 1;
 			Quality_TrackBar.TickStyle = TickStyle.None;
-			Quality_TrackBar.Value = 1;
+			Quality_TrackBar.Value = 10;
 			// 
 			// QualityName_Label
 			// 
@@ -253,20 +267,6 @@
 			MinimiseForm_BT.TabIndex = 7;
 			MinimiseForm_BT.Text = "__";
 			MinimiseForm_BT.UseVisualStyleBackColor = false;
-			// 
-			// SaveImage_BT
-			// 
-			SaveImage_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			SaveImage_BT.BackColor = Color.FromArgb(20, 20, 20);
-			SaveImage_BT.FlatAppearance.BorderColor = Color.Gray;
-			SaveImage_BT.FlatStyle = FlatStyle.Flat;
-			SaveImage_BT.ForeColor = SystemColors.ButtonFace;
-			SaveImage_BT.Location = new Point(3, 32);
-			SaveImage_BT.Name = "SaveImage_BT";
-			SaveImage_BT.Size = new Size(337, 23);
-			SaveImage_BT.TabIndex = 2;
-			SaveImage_BT.Text = "Сохранить кадр";
-			SaveImage_BT.UseVisualStyleBackColor = false;
 			// 
 			// MainForm
 			// 

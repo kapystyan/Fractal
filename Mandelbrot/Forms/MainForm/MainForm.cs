@@ -5,7 +5,7 @@ namespace Mandelbrot;
 public partial class MainForm : Form, IMainForm
 {
 	private double _scale = 500.0D;
-	private int _quality = 10;
+	private int _quality = 100;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
 	private Color _color = Color.Orange;
@@ -17,7 +17,7 @@ public partial class MainForm : Form, IMainForm
 		Terminal.OnAddLine += (obj) =>
 		{
 			Terminal_TextBox.Lines = obj.ToArray();
-			Terminal_TextBox.SelectionLength = 0;
+			Terminal_TextBox.SelectionStart = Terminal_TextBox.TextLength;
 			Terminal_TextBox.ScrollToCaret();
 		};
 
