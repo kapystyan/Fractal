@@ -4,11 +4,11 @@ namespace Mandelbrot;
 
 public partial class MainForm : Form, IMainForm
 {
-	private float _scale = 200.0F;
-	private int _quality = 50;
+	private decimal _scale = 500.0M;
+	private int _quality = 10;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
-	private Color _color = Color.Blue;
+	private Color _color = Color.Orange;
 
 	public MainForm()
 	{
@@ -24,28 +24,23 @@ public partial class MainForm : Form, IMainForm
 		Terminal.Print($"Нажмите на область вьюпорта или кнопку \'{Generate_BT.Text}\'");
 		Terminal.Print($"Нажимайте на фрактал чтобы путешествовать");
 
-		Scale_TrackBar.ValueChanged += (sender, e) =>
-		{
-			_scale = Scale_TrackBar.Value * 100.0F;
-			BaseScale_Label.Text = _scale.ToString();
-		};
 		Quality_TrackBar.ValueChanged += (sender, e) =>
 		{
-			_quality = Quality_TrackBar.Value;
+			_quality = Quality_TrackBar.Value * 10;
 			QualityValue_Label.Text = _quality.ToString();
 		};
 
 		Viewport_PictureBox.MouseClick += (sender, e) =>
 		{
-			_scale *= 1.5F;
+			_scale *= 1.5M;
 			_worldCenter = new Vector2(_localCenter.X, _localCenter.Y);
 			Draw();
 		};
 		Viewport_PictureBox.MouseMove += (sender, e) =>
 		{
 			_localCenter = new Vector2(
-				(e.Location.X - (float)Viewport_PictureBox.Width / 2.0F) / _scale + _worldCenter.X,
-				-(e.Location.Y - (float)Viewport_PictureBox.Height / 2.0F) / _scale + _worldCenter.Y
+				(e.Location.X - Viewport_PictureBox.Width / 2.0M) / _scale + _worldCenter.X,
+				-(e.Location.Y - Viewport_PictureBox.Height / 2.0M) / _scale + _worldCenter.Y
 			);
 			MousePosition_L.Text = $"X: {_localCenter.X}; Y: {_localCenter.Y}";
 		};
@@ -63,7 +58,7 @@ public partial class MainForm : Form, IMainForm
 			if (_worldCenter != Vector2.Zero)
 			{
 				_worldCenter = Vector2.Zero;
-				_scale = 200.0F;
+				_scale = 500.0M;
 				Draw();
 			}
 		};
@@ -74,7 +69,7 @@ public partial class MainForm : Form, IMainForm
 
 	private void Draw()
 	{
-		if (_quality > 100)
+		if (_quality > 400)
 			Terminal.Warning($"При значении параметра качества {_quality}, генерация кадра может занять некоторое время");
 		Vector2Int frameSize = new Vector2Int(Viewport_PictureBox.Width, Viewport_PictureBox.Height);
 		OnGenerate?.Invoke(this, new MainFormEventArgs(_scale, _quality, frameSize, _worldCenter, Viewport_PictureBox, _color));

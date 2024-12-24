@@ -8,8 +8,7 @@ internal static class Program
         ApplicationConfiguration.Initialize();
 
         MainForm mainForm = new MainForm();
-        FrameGenerator framer = new FrameGenerator();
-        MainFormPresenter mainFormPresenter = new MainFormPresenter(mainForm, framer);
+        MainFormPresenter mainFormPresenter = new MainFormPresenter(mainForm);
 
         Application.Run(mainForm);
     }

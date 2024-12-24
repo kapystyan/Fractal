@@ -3,18 +3,17 @@
 public class MainFormPresenter
 {
 	private readonly IMainForm _view;
-	private readonly FrameGenerator _framer;
 
-	public MainFormPresenter(IMainForm view, FrameGenerator framer)
+	public MainFormPresenter(IMainForm view)
 	{
 		_view = view;
-		_framer = framer;
 
 		_view.OnGenerate += View_OnGenerate;
 	}
 
 	private void View_OnGenerate(object? sender, MainFormEventArgs e)
 	{
-		e.Viewport.Image = _framer.GetFrame(e.Quality, e.Scale, e.FrameSize, e.WorldCenter, e.Color);
+		FrameGenerator framer = new FrameGenerator(e.Quality, e.Scale, e.FrameSize, e.WorldCenter, e.Color);
+		e.Viewport.Image = framer.GetFrame();
 	}
 }

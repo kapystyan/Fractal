@@ -31,11 +31,8 @@
 			Viewport_PictureBox = new PictureBox();
 			Terminal_TextBox = new TextBox();
 			Settings_Panel = new Panel();
-			Scale_Panel = new Panel();
-			BaseScale_Label = new Label();
-			BaseScaleName_L = new Label();
-			Scale_TrackBar = new TrackBar();
 			Control_Panel = new Panel();
+			ResetZoom_BT = new Button();
 			ChooseColor_BT = new Button();
 			Generate_BT = new Button();
 			Quality_Panel = new Panel();
@@ -46,11 +43,8 @@
 			FractalZoneColor = new ColorDialog();
 			CloseForm_BT = new Button();
 			MinimiseForm_BT = new Button();
-			ResetZoom_BT = new Button();
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).BeginInit();
 			Settings_Panel.SuspendLayout();
-			Scale_Panel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)Scale_TrackBar).BeginInit();
 			Control_Panel.SuspendLayout();
 			Quality_Panel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)Quality_TrackBar).BeginInit();
@@ -86,60 +80,12 @@
 			// Settings_Panel
 			// 
 			Settings_Panel.BackColor = Color.FromArgb(20, 20, 20);
-			Settings_Panel.Controls.Add(Scale_Panel);
 			Settings_Panel.Controls.Add(Control_Panel);
 			Settings_Panel.Controls.Add(Quality_Panel);
 			Settings_Panel.Location = new Point(1481, 33);
 			Settings_Panel.Name = "Settings_Panel";
 			Settings_Panel.Size = new Size(343, 800);
 			Settings_Panel.TabIndex = 4;
-			// 
-			// Scale_Panel
-			// 
-			Scale_Panel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			Scale_Panel.BackColor = Color.Transparent;
-			Scale_Panel.Controls.Add(BaseScale_Label);
-			Scale_Panel.Controls.Add(BaseScaleName_L);
-			Scale_Panel.Controls.Add(Scale_TrackBar);
-			Scale_Panel.Location = new Point(3, 77);
-			Scale_Panel.Name = "Scale_Panel";
-			Scale_Panel.Size = new Size(337, 64);
-			Scale_Panel.TabIndex = 5;
-			// 
-			// BaseScale_Label
-			// 
-			BaseScale_Label.AutoSize = true;
-			BaseScale_Label.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			BaseScale_Label.ForeColor = SystemColors.Control;
-			BaseScale_Label.Location = new Point(125, 2);
-			BaseScale_Label.Name = "BaseScale_Label";
-			BaseScale_Label.Size = new Size(25, 15);
-			BaseScale_Label.TabIndex = 4;
-			BaseScale_Label.Text = "200";
-			BaseScale_Label.TextAlign = ContentAlignment.MiddleCenter;
-			// 
-			// BaseScaleName_L
-			// 
-			BaseScaleName_L.AutoSize = true;
-			BaseScaleName_L.ForeColor = SystemColors.Control;
-			BaseScaleName_L.Location = new Point(0, 2);
-			BaseScaleName_L.Name = "BaseScaleName_L";
-			BaseScaleName_L.Size = new Size(119, 15);
-			BaseScaleName_L.TabIndex = 1;
-			BaseScaleName_L.Text = "Базовое увеличение";
-			// 
-			// Scale_TrackBar
-			// 
-			Scale_TrackBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			Scale_TrackBar.BackColor = Color.FromArgb(20, 20, 20);
-			Scale_TrackBar.Location = new Point(0, 20);
-			Scale_TrackBar.Maximum = 5;
-			Scale_TrackBar.Minimum = 2;
-			Scale_TrackBar.Name = "Scale_TrackBar";
-			Scale_TrackBar.Size = new Size(338, 45);
-			Scale_TrackBar.TabIndex = 0;
-			Scale_TrackBar.TickStyle = TickStyle.None;
-			Scale_TrackBar.Value = 2;
 			// 
 			// Control_Panel
 			// 
@@ -152,6 +98,20 @@
 			Control_Panel.Name = "Control_Panel";
 			Control_Panel.Size = new Size(343, 127);
 			Control_Panel.TabIndex = 1;
+			// 
+			// ResetZoom_BT
+			// 
+			ResetZoom_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			ResetZoom_BT.BackColor = Color.FromArgb(20, 20, 20);
+			ResetZoom_BT.FlatAppearance.BorderColor = Color.Gray;
+			ResetZoom_BT.FlatStyle = FlatStyle.Flat;
+			ResetZoom_BT.ForeColor = SystemColors.ButtonFace;
+			ResetZoom_BT.Location = new Point(3, 72);
+			ResetZoom_BT.Name = "ResetZoom_BT";
+			ResetZoom_BT.Size = new Size(337, 23);
+			ResetZoom_BT.TabIndex = 1;
+			ResetZoom_BT.Text = "Сбросить положение";
+			ResetZoom_BT.UseVisualStyleBackColor = false;
 			// 
 			// ChooseColor_BT
 			// 
@@ -202,7 +162,7 @@
 			QualityValue_Label.Name = "QualityValue_Label";
 			QualityValue_Label.Size = new Size(19, 15);
 			QualityValue_Label.TabIndex = 3;
-			QualityValue_Label.Text = "50";
+			QualityValue_Label.Text = "10";
 			QualityValue_Label.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// Quality_TrackBar
@@ -211,13 +171,13 @@
 			Quality_TrackBar.BackColor = Color.FromArgb(20, 20, 20);
 			Quality_TrackBar.LargeChange = 1;
 			Quality_TrackBar.Location = new Point(0, 21);
-			Quality_TrackBar.Maximum = 150;
-			Quality_TrackBar.Minimum = 30;
+			Quality_TrackBar.Maximum = 20;
+			Quality_TrackBar.Minimum = 1;
 			Quality_TrackBar.Name = "Quality_TrackBar";
 			Quality_TrackBar.Size = new Size(337, 45);
 			Quality_TrackBar.TabIndex = 1;
 			Quality_TrackBar.TickStyle = TickStyle.None;
-			Quality_TrackBar.Value = 50;
+			Quality_TrackBar.Value = 1;
 			// 
 			// QualityName_Label
 			// 
@@ -276,20 +236,6 @@
 			MinimiseForm_BT.Text = "__";
 			MinimiseForm_BT.UseVisualStyleBackColor = false;
 			// 
-			// ResetZoom_BT
-			// 
-			ResetZoom_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			ResetZoom_BT.BackColor = Color.FromArgb(20, 20, 20);
-			ResetZoom_BT.FlatAppearance.BorderColor = Color.Gray;
-			ResetZoom_BT.FlatStyle = FlatStyle.Flat;
-			ResetZoom_BT.ForeColor = SystemColors.ButtonFace;
-			ResetZoom_BT.Location = new Point(3, 72);
-			ResetZoom_BT.Name = "ResetZoom_BT";
-			ResetZoom_BT.Size = new Size(337, 23);
-			ResetZoom_BT.TabIndex = 1;
-			ResetZoom_BT.Text = "Сбросить положение";
-			ResetZoom_BT.UseVisualStyleBackColor = false;
-			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -311,9 +257,6 @@
 			Text = "Mandelbrot";
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).EndInit();
 			Settings_Panel.ResumeLayout(false);
-			Scale_Panel.ResumeLayout(false);
-			Scale_Panel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)Scale_TrackBar).EndInit();
 			Control_Panel.ResumeLayout(false);
 			Quality_Panel.ResumeLayout(false);
 			Quality_Panel.PerformLayout();
@@ -333,10 +276,6 @@
 		private Panel Quality_Panel;
 		private Label MousePosition_L;
 		private Label QualityValue_Label;
-		private Panel Scale_Panel;
-		private Label BaseScaleName_L;
-		private TrackBar Scale_TrackBar;
-		private Label BaseScale_Label;
 		private Button ChooseColor_BT;
 		private ColorDialog FractalZoneColor;
 		private Panel Control_Panel;
