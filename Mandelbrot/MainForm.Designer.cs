@@ -46,6 +46,7 @@
 			FractalZoneColor = new ColorDialog();
 			CloseForm_BT = new Button();
 			MinimiseForm_BT = new Button();
+			ResetZoom_BT = new Button();
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).BeginInit();
 			Settings_Panel.SuspendLayout();
 			Scale_Panel.SuspendLayout();
@@ -71,6 +72,7 @@
 			Terminal_TextBox.Dock = DockStyle.Bottom;
 			Terminal_TextBox.Font = new Font("Consolas", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			Terminal_TextBox.ForeColor = SystemColors.Info;
+			Terminal_TextBox.HideSelection = false;
 			Terminal_TextBox.ImeMode = ImeMode.Disable;
 			Terminal_TextBox.Location = new Point(0, 839);
 			Terminal_TextBox.Multiline = true;
@@ -143,11 +145,12 @@
 			// 
 			Control_Panel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			Control_Panel.BackColor = Color.FromArgb(20, 20, 20);
+			Control_Panel.Controls.Add(ResetZoom_BT);
 			Control_Panel.Controls.Add(ChooseColor_BT);
 			Control_Panel.Controls.Add(Generate_BT);
-			Control_Panel.Location = new Point(0, 727);
+			Control_Panel.Location = new Point(0, 667);
 			Control_Panel.Name = "Control_Panel";
-			Control_Panel.Size = new Size(343, 67);
+			Control_Panel.Size = new Size(343, 127);
 			Control_Panel.TabIndex = 1;
 			// 
 			// ChooseColor_BT
@@ -171,7 +174,7 @@
 			Generate_BT.FlatAppearance.BorderColor = Color.Gray;
 			Generate_BT.FlatStyle = FlatStyle.Flat;
 			Generate_BT.ForeColor = SystemColors.ButtonFace;
-			Generate_BT.Location = new Point(3, 41);
+			Generate_BT.Location = new Point(3, 101);
 			Generate_BT.Name = "Generate_BT";
 			Generate_BT.Size = new Size(337, 23);
 			Generate_BT.TabIndex = 0;
@@ -273,6 +276,20 @@
 			MinimiseForm_BT.Text = "__";
 			MinimiseForm_BT.UseVisualStyleBackColor = false;
 			// 
+			// ResetZoom_BT
+			// 
+			ResetZoom_BT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			ResetZoom_BT.BackColor = Color.FromArgb(20, 20, 20);
+			ResetZoom_BT.FlatAppearance.BorderColor = Color.Gray;
+			ResetZoom_BT.FlatStyle = FlatStyle.Flat;
+			ResetZoom_BT.ForeColor = SystemColors.ButtonFace;
+			ResetZoom_BT.Location = new Point(3, 72);
+			ResetZoom_BT.Name = "ResetZoom_BT";
+			ResetZoom_BT.Size = new Size(337, 23);
+			ResetZoom_BT.TabIndex = 1;
+			ResetZoom_BT.Text = "Сбросить положение";
+			ResetZoom_BT.UseVisualStyleBackColor = false;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -325,5 +342,6 @@
 		private Panel Control_Panel;
 		private Button CloseForm_BT;
 		private Button MinimiseForm_BT;
+		private Button ResetZoom_BT;
 	}
 }

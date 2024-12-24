@@ -8,7 +8,7 @@ public partial class MainForm : Form, IMainForm
 	private int _quality = 50;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
-	private Color _color = Color.DarkGray;
+	private Color _color = Color.Blue;
 
 	public MainForm()
 	{
@@ -17,9 +17,12 @@ public partial class MainForm : Form, IMainForm
 		Terminal.OnAddLine += (obj) =>
 		{
 			Terminal_TextBox.Lines = obj.ToArray();
-			Terminal_TextBox.SelectionLength = Terminal_TextBox.Text.ToArray().First();
+			Terminal_TextBox.SelectionLength = 0;
 			Terminal_TextBox.ScrollToCaret();
 		};
+
+		Terminal.Print($"Нажмите на область вьюпорта или кнопку \'{Generate_BT.Text}\'");
+		Terminal.Print($"Нажимайте на фрактал чтобы путешествовать");
 
 		Scale_TrackBar.ValueChanged += (sender, e) =>
 		{
@@ -53,6 +56,15 @@ public partial class MainForm : Form, IMainForm
 			{
 				_color = FractalZoneColor.Color;
 				Terminal.Print($"Следующая генерация кадра изменена");
+			}
+		};
+		ResetZoom_BT.Click += (sender, e) =>
+		{
+			if (_worldCenter != Vector2.Zero)
+			{
+				_worldCenter = Vector2.Zero;
+				_scale = 200.0F;
+				Draw();
 			}
 		};
 		Generate_BT.Click += (sender, e) => Draw();
