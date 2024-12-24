@@ -308,7 +308,6 @@
 		#endregion
 
 		private PictureBox Viewport_PictureBox;
-		private PictureBox ConsoleBackGround_PB;
 		private TextBox Terminal_TextBox;
 		private Panel Settings_Panel;
 		private Button Generate_BT;
