@@ -4,7 +4,7 @@ namespace Mandelbrot;
 
 public partial class MainForm : Form, IMainForm
 {
-	private decimal _scale = 500.0M;
+	private double _scale = 500.0D;
 	private int _quality = 10;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
@@ -21,9 +21,6 @@ public partial class MainForm : Form, IMainForm
 			Terminal_TextBox.ScrollToCaret();
 		};
 
-		Terminal.Print($"Нажмите на область вьюпорта или кнопку \'{Generate_BT.Text}\'");
-		Terminal.Print($"Нажимайте на фрактал чтобы путешествовать");
-
 		Quality_TrackBar.ValueChanged += (sender, e) =>
 		{
 			_quality = Quality_TrackBar.Value * 10;
@@ -32,15 +29,15 @@ public partial class MainForm : Form, IMainForm
 
 		Viewport_PictureBox.MouseClick += (sender, e) =>
 		{
-			_scale *= 1.5M;
+			_scale *= 1.5D;
 			_worldCenter = new Vector2(_localCenter.X, _localCenter.Y);
 			Draw();
 		};
 		Viewport_PictureBox.MouseMove += (sender, e) =>
 		{
 			_localCenter = new Vector2(
-				(e.Location.X - Viewport_PictureBox.Width / 2.0M) / _scale + _worldCenter.X,
-				-(e.Location.Y - Viewport_PictureBox.Height / 2.0M) / _scale + _worldCenter.Y
+				(e.Location.X - Viewport_PictureBox.Width / 2.0D) / _scale + _worldCenter.X,
+				-(e.Location.Y - Viewport_PictureBox.Height / 2.0D) / _scale + _worldCenter.Y
 			);
 			MousePosition_L.Text = $"X: {_localCenter.X}; Y: {_localCenter.Y}";
 		};
@@ -58,7 +55,7 @@ public partial class MainForm : Form, IMainForm
 			if (_worldCenter != Vector2.Zero)
 			{
 				_worldCenter = Vector2.Zero;
-				_scale = 500.0M;
+				_scale = 500.0D;
 				Draw();
 			}
 		};

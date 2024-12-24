@@ -8,12 +8,12 @@ public class FrameGenerator
 {
 	private const PixelFormat BASE_PIXEL_FORMAT = PixelFormat.Format32bppArgb;
 	private int _quality;
-	private decimal _scale;
+	private double _scale;
 	private Vector2Int _frameSize;
 	private Vector2 _worldCenter;
 	private Color _color;
 
-	public FrameGenerator(int quality, decimal scale, Vector2Int frameSize, Vector2 worldCenter, Color color)
+	public FrameGenerator(int quality, double scale, Vector2Int frameSize, Vector2 worldCenter, Color color)
 	{
 		_quality = quality;
 		_scale = scale;
@@ -62,10 +62,10 @@ public class FrameGenerator
 	private void SetPixel(int x, int y, byte[] rgba)
 	{
 		int point = (y * _frameSize.X + x) * 4;
-		Vector2 xy0 = new Vector2((x - _frameSize.X / 2.0M) / _scale + _worldCenter.X, -(y - _frameSize.Y / 2.0M) / _scale + _worldCenter.Y);
+		Vector2 xy0 = new Vector2((x - _frameSize.X / 2.0D) / _scale + _worldCenter.X, -(y - _frameSize.Y / 2.0D) / _scale + _worldCenter.Y);
 
-		decimal x0 = xy0.X, y0 = xy0.Y;
-		decimal xN, yN;
+		double x0 = xy0.X, y0 = xy0.Y;
+		double xN, yN;
 		bool isDotInclude = true;
 
 		int i;

@@ -28,9 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			Viewport_PictureBox = new PictureBox();
 			Terminal_TextBox = new TextBox();
 			Settings_Panel = new Panel();
+			Info_TextBox = new TextBox();
 			Control_Panel = new Panel();
 			ResetZoom_BT = new Button();
 			ChooseColor_BT = new Button();
@@ -80,12 +82,26 @@
 			// Settings_Panel
 			// 
 			Settings_Panel.BackColor = Color.FromArgb(20, 20, 20);
+			Settings_Panel.Controls.Add(Info_TextBox);
 			Settings_Panel.Controls.Add(Control_Panel);
 			Settings_Panel.Controls.Add(Quality_Panel);
 			Settings_Panel.Location = new Point(1481, 33);
 			Settings_Panel.Name = "Settings_Panel";
 			Settings_Panel.Size = new Size(343, 800);
 			Settings_Panel.TabIndex = 4;
+			// 
+			// Info_TextBox
+			// 
+			Info_TextBox.BackColor = Color.FromArgb(20, 20, 20);
+			Info_TextBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			Info_TextBox.ForeColor = SystemColors.ButtonFace;
+			Info_TextBox.Location = new Point(3, 576);
+			Info_TextBox.Multiline = true;
+			Info_TextBox.Name = "Info_TextBox";
+			Info_TextBox.ReadOnly = true;
+			Info_TextBox.Size = new Size(337, 88);
+			Info_TextBox.TabIndex = 4;
+			Info_TextBox.Text = resources.GetString("Info_TextBox.Text");
 			// 
 			// Control_Panel
 			// 
@@ -171,7 +187,7 @@
 			Quality_TrackBar.BackColor = Color.FromArgb(20, 20, 20);
 			Quality_TrackBar.LargeChange = 1;
 			Quality_TrackBar.Location = new Point(0, 21);
-			Quality_TrackBar.Maximum = 20;
+			Quality_TrackBar.Maximum = 40;
 			Quality_TrackBar.Minimum = 1;
 			Quality_TrackBar.Name = "Quality_TrackBar";
 			Quality_TrackBar.Size = new Size(337, 45);
@@ -257,6 +273,7 @@
 			Text = "Mandelbrot";
 			((System.ComponentModel.ISupportInitialize)Viewport_PictureBox).EndInit();
 			Settings_Panel.ResumeLayout(false);
+			Settings_Panel.PerformLayout();
 			Control_Panel.ResumeLayout(false);
 			Quality_Panel.ResumeLayout(false);
 			Quality_Panel.PerformLayout();
@@ -282,5 +299,6 @@
 		private Button CloseForm_BT;
 		private Button MinimiseForm_BT;
 		private Button ResetZoom_BT;
+		private TextBox Info_TextBox;
 	}
 }
