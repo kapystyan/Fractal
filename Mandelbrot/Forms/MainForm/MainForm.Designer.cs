@@ -238,7 +238,7 @@
 			// 
 			// FractalZoneColor
 			// 
-			FractalZoneColor.Color = Color.Blue;
+			FractalZoneColor.Color = Color.DeepSkyBlue;
 			// 
 			// CloseForm_BT
 			// 

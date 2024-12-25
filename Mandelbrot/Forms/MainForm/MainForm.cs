@@ -8,7 +8,7 @@ public partial class MainForm : Form, IMainForm
 	private int _quality = 100;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
-	private Color _color = Color.Orange;
+	private Color _color = Color.DeepSkyBlue;
 
 	public MainForm()
 	{
