@@ -194,7 +194,7 @@
 			QualityValue_Label.Name = "QualityValue_Label";
 			QualityValue_Label.Size = new Size(25, 15);
 			QualityValue_Label.TabIndex = 3;
-			QualityValue_Label.Text = "100";
+			QualityValue_Label.Text = "300";
 			QualityValue_Label.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// Quality_TrackBar
@@ -203,13 +203,13 @@
 			Quality_TrackBar.BackColor = Color.FromArgb(20, 20, 20);
 			Quality_TrackBar.LargeChange = 1;
 			Quality_TrackBar.Location = new Point(0, 21);
-			Quality_TrackBar.Maximum = 40;
-			Quality_TrackBar.Minimum = 1;
+			Quality_TrackBar.Maximum = 100;
+			Quality_TrackBar.Minimum = 30;
 			Quality_TrackBar.Name = "Quality_TrackBar";
 			Quality_TrackBar.Size = new Size(337, 45);
 			Quality_TrackBar.TabIndex = 1;
 			Quality_TrackBar.TickStyle = TickStyle.None;
-			Quality_TrackBar.Value = 10;
+			Quality_TrackBar.Value = 30;
 			// 
 			// QualityName_Label
 			// 

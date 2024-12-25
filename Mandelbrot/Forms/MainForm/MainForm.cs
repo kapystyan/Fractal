@@ -4,8 +4,8 @@ namespace Mandelbrot;
 
 public partial class MainForm : Form, IMainForm
 {
-	private double _scale = 500.0D;
-	private int _quality = 100;
+	private double _scale = 120.0D;
+	private int _quality = 300;
 	private Vector2 _worldCenter;
 	private Vector2 _localCenter;
 	private Color _color = Color.DeepSkyBlue;
@@ -55,7 +55,7 @@ public partial class MainForm : Form, IMainForm
 			if (_worldCenter != Vector2.Zero)
 			{
 				_worldCenter = Vector2.Zero;
-				_scale = 500.0D;
+				_scale = 120.0D;
 				Draw();
 			}
 			else
