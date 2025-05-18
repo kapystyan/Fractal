@@ -1,4 +1,6 @@
-﻿namespace Mathematics;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Mathematics;
 
 public readonly struct Vector2Int
 {
@@ -13,6 +15,12 @@ public readonly struct Vector2Int
 	public int X => _x;
 	public int Y => _y;
 
-	public static Vector2Int operator +(Vector2Int v1, Vector2Int v2) => new Vector2Int(v1.X + v2.X, v1.Y + v2.Y);
-	public static Vector2Int operator -(Vector2Int v1, Vector2Int v2) => new Vector2Int(v1.X - v2.X, v1.Y - v2.Y);
+	public override string ToString() => $"({X}; {Y})";
+	public override bool Equals([NotNullWhen(true)] object? obj) => base.Equals(obj);
+	public override int GetHashCode() => base.GetHashCode();
+
+	public static Vector2Int operator +(Vector2Int left, Vector2Int right) => new Vector2Int(left.X + right.X, left.Y + right.Y);
+	public static Vector2Int operator -(Vector2Int left, Vector2Int right) => new Vector2Int(left.X - right.X, left.Y - right.Y);
+	public static bool operator ==(Vector2Int left, Vector2Int right) => left.X == right.X && left.Y == right.Y;
+	public static bool operator !=(Vector2Int left, Vector2Int right) => !(left == right);
 }
