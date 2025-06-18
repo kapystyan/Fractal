@@ -4,29 +4,15 @@ using System.Runtime.InteropServices;
 
 namespace Mandelbrot;
 
-public class FrameGenerator
+public class FrameGenerator(int quality, double scale, Vector2Int frameSize, Vector2 worldCenter, Color color)
 {
 	private const PixelFormat BASE_PIXEL_FORMAT = PixelFormat.Format32bppArgb;
-	private int _quality;
-	private double _scale;
-	private Vector2Int _frameSize;
-	private Vector2 _worldCenter;
-	private Color _color;
-
-	public FrameGenerator(int quality, double scale, Vector2Int frameSize, Vector2 worldCenter, Color color)
-	{
-		_quality = quality;
-		_scale = scale;
-		_frameSize = frameSize;
-		_worldCenter = worldCenter;
-		_color = color;
-	}
 
 	public Bitmap GetFrame()
 	{
 		Terminal.Print("Начало генерации");
 
-		Bitmap frame = new Bitmap(_frameSize.X, _frameSize.Y, BASE_PIXEL_FORMAT);
+		Bitmap frame = new Bitmap(frameSize.X, frameSize.Y, BASE_PIXEL_FORMAT);
 		Terminal.Print("Фиксация памяти");
 		var meta = frame.LockBits(new Rectangle(0, 0, frame.Width, frame.Height), ImageLockMode.ReadWrite, BASE_PIXEL_FORMAT);
 		IntPtr ptr = meta.Scan0;
@@ -53,7 +39,7 @@ public class FrameGenerator
 		Terminal.Print("Чистка памяти");
 		frame.UnlockBits(meta);
 
-		Terminal.Print($"Сгенерировано {_frameSize.X * _frameSize.Y} пикселей");
+		Terminal.Print($"Сгенерировано {frameSize.X * frameSize.Y} пикселей");
 		Terminal.Print("Конец генерации");
 
 		return frame;
@@ -61,15 +47,15 @@ public class FrameGenerator
 
 	private void SetPixel(int x, int y, byte[] rgba)
 	{
-		int point = (y * _frameSize.X + x) * 4;
-		Vector2 xy0 = new Vector2((x - _frameSize.X / 2.0D) / _scale + _worldCenter.X, -(y - _frameSize.Y / 2.0D) / _scale + _worldCenter.Y);
+		int point = (y * frameSize.X + x) * 4;
+		Vector2 xy0 = new Vector2((x - frameSize.X / 2.0D) / scale + worldCenter.X, -(y - frameSize.Y / 2.0D) / scale + worldCenter.Y);
 
 		double x0 = xy0.X, y0 = xy0.Y;
 		double xN, yN;
 		bool isDotInclude = true;
 
 		int i;
-		for (i = 0; i < _quality; i++)
+		for (i = 0; i < quality; i++)
 		{
 			xN = xy0.X * xy0.X - xy0.Y * xy0.Y + x0;
 			yN = 2 * xy0.X * xy0.Y + y0;
@@ -85,18 +71,18 @@ public class FrameGenerator
 
 		if (isDotInclude)
 		{
-			rgba[point] = _color.B; // blue
-			rgba[point + 1] = _color.G; // green
-			rgba[point + 2] = _color.R; // red
+			rgba[point] = color.B; // blue
+			rgba[point + 1] = color.G; // green
+			rgba[point + 2] = color.R; // red
 			rgba[point + 3] = 255; // alpha
 		}
 		else
 		{
-			float displacementCoefficient = (float)i / _quality;
+			float displacementCoefficient = (float)i / quality;
 
-			rgba[point] = (byte)(displacementCoefficient * _color.B); // blue
-			rgba[point + 1] = (byte)(displacementCoefficient * _color.G); // green
-			rgba[point + 2] = (byte)(displacementCoefficient * _color.R); // red
+			rgba[point] = (byte)(displacementCoefficient * color.B); // blue
+			rgba[point + 1] = (byte)(displacementCoefficient * color.G); // green
+			rgba[point + 2] = (byte)(displacementCoefficient * color.R); // red
 			rgba[point + 3] = 255; // alpha
 		}
 	}
