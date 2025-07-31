@@ -1,3 +1,6 @@
+using Mandelbrot.FrameEngine;
+using Mandelbrot.Presenters;
+
 namespace Mandelbrot;
 
 internal static class Program
@@ -7,8 +10,10 @@ internal static class Program
     {
         ApplicationConfiguration.Initialize();
 
+        FrameGenerator.OnMessage += Terminal.Show;
+
         MainForm mainForm = new MainForm();
-        MainFormPresenter mainFormPresenter = new MainFormPresenter(mainForm);
+        new FramePresenter(mainForm);
 
         Application.Run(mainForm);
     }

@@ -1,25 +1,26 @@
-﻿namespace Mandelbrot;
+﻿namespace Mandelbrot.FrameEngine;
 
-public class FrameSaver
+public static class FrameSaver
 {
-	public void Save(Image image)
+	public static event Action<string>? OnMessage;
+
+	public static void Save(Image image)
 	{
-		if (image is not null)
+		if (image is null)
+			throw new NullReferenceException();
+
+		SaveFileDialog dialog = new SaveFileDialog()
 		{
-			SaveFileDialog dialog = new SaveFileDialog()
-			{
-				Title = "Сохранить кадр в...",
-				Filter = "Файлы изображений (*.JPG)|*.JPG",
-				CheckPathExists = true,
-				FileName = "Maldebrot"
-			};
-			if (dialog.ShowDialog() == DialogResult.OK)
-			{
-				image.Save(dialog.FileName);
-				Terminal.Print($"Кадр был сохранен в \'{dialog.FileName}\'");
-			}
+			Title = "Сохранить кадр в...",
+			Filter = "Файлы изображений (*.JPG)|*.JPG",
+			CheckPathExists = true,
+			FileName = "Maldebrot"
+		};
+
+		if (dialog.ShowDialog() == DialogResult.OK)
+		{
+			image.Save(dialog.FileName);
+			OnMessage?.Invoke($"Кадр был сохранен в \'{dialog.FileName}\'");
 		}
-		else
-			Terminal.Warning($"Кадр был пуст");
 	}
 }

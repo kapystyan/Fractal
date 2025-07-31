@@ -1,17 +1,24 @@
+using Mandelbrot.Forms.MainForm;
+using Mandelbrot.FrameEngine;
 using Mathematics;
 
 namespace Mandelbrot;
 
 public partial class MainForm : Form, IMainForm
 {
-	private double _scale = 120.0D;
-	private int _quality = 300;
-	private Vector2 _worldCenter;
-	private Vector2 _localCenter;
-	private Color _color = Color.DeepSkyBlue;
+	private double _scale;
+	private int _quality;
+	private Vector2 _worldCenter, _localCenter;
+	private Color _color;
 
 	public MainForm()
 	{
+		_scale = 120.0;
+		_quality = 300;
+		_worldCenter = default;
+		_localCenter = default;
+		_color = Color.DeepSkyBlue;
+
 		InitializeComponent();
 
 		Terminal.OnAddLine += (obj) =>
@@ -67,14 +74,17 @@ public partial class MainForm : Form, IMainForm
 		CloseForm_BT.Click += (sender, e) => Close();
 	}
 
+	#region IMainForm
+	public event EventHandler<MainFormEventArgs>? OnGenerate;
+	public event Action<Image>? OnImageSave;
+
+	public void ShowFrame(Image image) => Viewport_PictureBox.Image = image;
+	#endregion
+
 	private void Draw()
 	{
 		if (_quality > 400)
 			Terminal.Warning($"При значении параметра качества {_quality}, генерация кадра может занять некоторое время");
-		Vector2Int frameSize = new Vector2Int(Viewport_PictureBox.Width, Viewport_PictureBox.Height);
-		OnGenerate?.Invoke(this, new MainFormEventArgs(_scale, _quality, frameSize, _worldCenter, Viewport_PictureBox, _color));
+		OnGenerate?.Invoke(this, new MainFormEventArgs(_scale, _quality, new Vector2Int(Viewport_PictureBox.Width, Viewport_PictureBox.Height), _worldCenter, _color));
 	}
-
-	public event EventHandler<MainFormEventArgs>? OnGenerate;
-	public event Action<Image>? OnImageSave;
 }
